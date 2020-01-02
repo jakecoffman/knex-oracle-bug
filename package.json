@@ -1,0 +1,24 @@
+{
+  "name": "knex-oracle-bug",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "knex": "^0.20.6",
+    "oracledb": "^4.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "run": "DEBUG=* node index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jakecoffman/knex-oracle-bug.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jakecoffman/knex-oracle-bug/issues"
+  },
+  "homepage": "https://github.com/jakecoffman/knex-oracle-bug#readme"
+}
