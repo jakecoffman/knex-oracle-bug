@@ -1,7 +1,7 @@
 const secret = require('./secret')
 const knex = require('knex')({
   client: 'oracledb',
-  debug: true,
+  debug: false,
   asyncStackTraces: true,
   connection: {
     host: secret.host,
@@ -28,24 +28,21 @@ function sleep(ms) {
 }
 
 async function main() {
-  const trx = await knex.transaction()
-
-  console.log("Started transaction")
-
-  await sleep(5000)
-
-  console.log("Committing")
-
   try {
-    await trx.commit()
+    await knex.transaction(async trx => {
+      await trx('COFFMANJ.TABLE1').insert({COLUMN1: 'hello'})
+
+      // Pull the plug during the sleep to reproduce the issue
+      console.log('Sleeping')
+      await sleep(5000)
+      console.log('Committing')
+    })
   } catch (e) {
-    console.log("Error committing:", e)
+    console.error('Caught error:', e)
     await knex.destroy()
     return
   }
-
-  console.log("Ok")
-
+  console.log('No errors')
   await knex.destroy()
 }
 

@@ -7,12 +7,13 @@ Running this normally:
 
   knex:tx trx1: Starting top level transaction +0ms
   knex:client acquired connection from pool: __knexUid2 +0ms
-Started transaction
+  knex:query insert into "COFFMANJ"."TABLE1" ("COLUMN1") values (?) trx1 +0ms
+  knex:bindings [ 'hello' ] trx1 +0ms
+Sleeping
 Committing
   knex:tx trx1: releasing connection +0ms
-Ok
+No errors
   knex:client releasing connection to pool: __knexUid2 +5s
-
 ```
 
 Running when disconnecting from the network during the sleep:
@@ -22,11 +23,13 @@ Running when disconnecting from the network during the sleep:
 
   knex:tx trx1: Starting top level transaction +0ms
   knex:client acquired connection from pool: __knexUid2 +0ms
-Started transaction
+  knex:query insert into "COFFMANJ"."TABLE1" ("COLUMN1") values (?) trx1 +0ms
+  knex:bindings [ 'hello' ] trx1 +0ms
+Sleeping
 Committing
   knex:tx trx1: releasing connection +0ms
-Ok
+No errors
 Unhandled rejection Error: ORA-03113: end-of-file on communication channel
-Process ID: 84702
-Session ID: 2754 Serial number: 4294981384
+Process ID: 37950
+Session ID: 1858 Serial number: 4295027021
 ```
